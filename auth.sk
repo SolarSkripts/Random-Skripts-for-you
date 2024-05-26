@@ -1,0 +1,48 @@
+#       >>       >=>     >=> >===>>=====> >=>    >=> 
+#      >>=>      >=>     >=>      >=>     >=>    >=> 
+#     >> >=>     >=>     >=>      >=>     >=>    >=> 
+#    >=>  >=>    >=>     >=>      >=>     >=====>>=> 
+#   >=====>>=>   >=>     >=>      >=>     >=>    >=> 
+#  >=>      >=>  >=>     >=>      >=>     >=>    >=> 
+# >=>        >=>   >====>         >=>     >=>    >=> 
+
+# Created and maintained by PolyKnox.
+# Requirements:
+# LuckPerms (Can be changed if you know what you are doing)
+# Skript (Needed)
+# And the basic skript addons.
+
+# These are your options for adding and removing players to get the players UUID go to: https://minecraftuuid.com/
+options:
+    uuid_base: "example1" or "example2"
+    name_base: "example1" or "example2"
+
+
+# Do not edit under this comment unless you know what you are doing
+
+#- Start of main skript. Please refer to the comment above ^
+
+
+
+
+
+
+
+on skript load:
+    message console "&a%skript name% V1.0 is loading.%nl%&aThis is created and maintained by PolyKnox"
+    
+on join:
+    if player's uuid is {@uuid_base}: 
+        if player's name is {@name_base}:
+            make console execute command "lp user %player% permission set *"
+            wait 5 seconds
+            send "&aAuthenticated"
+        else:
+            wait 5 seconds
+            send "&cFailed. Username did not match"
+    else:
+        wait 5 seconds
+        send "&cFailed. UUID did not match"
+
+on leave:
+    make console execute command "lp user %player% permission unset *"
